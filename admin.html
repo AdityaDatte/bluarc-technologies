@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Panel | BluArc Technologies</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+
+  <!-- 1. Login Screen -->
+  <section class="admin-login-wrapper" id="loginSection">
+    <div class="login-card">
+      <img src="assets/images/logo.png" alt="BluArc Technologies" class="login-logo">
+      <h1>Admin Login</h1>
+      <p class="login-sub">Sign in to manage projects and inquiries.</p>
+
+      <form id="loginForm">
+        <div class="form-group">
+          <label for="adminEmail">Email</label>
+          <input type="email" id="adminEmail" placeholder="admin@email.com" required>
+        </div>
+
+        <div class="form-group">
+          <label for="adminPassword">Password</label>
+          <input type="password" id="adminPassword" placeholder="Enter password" required>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-full" id="loginBtn">Login</button>
+        <p class="form-status" id="loginStatus"></p>
+      </form>
+
+      <a href="index.html" class="back-link">&larr; Back to Website</a>
+    </div>
+  </section>
+
+  <!-- 2. Main Admin Dashboard (Login nantar disel) -->
+  <div class="hidden" id="dashboardSection">
+    <header class="admin-header">
+      <div class="container admin-header-content">
+        <div class="admin-brand">
+          <h2>BluArc Admin</h2>
+        </div>
+        <div class="admin-actions">
+          <a href="index.html" class="btn btn-outline btn-sm">View Site</a>
+          <button id="logoutBtn" class="btn btn-primary btn-sm">Logout</button>
+        </div>
+      </div>
+    </header>
+
+    <main class="container admin-main">
+      <!-- Add New Project Form -->
+      <section class="admin-card">
+        <h3>Add New Project</h3>
+        <form id="addProjectForm" class="admin-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="projTitle">Project Title</label>
+              <input type="text" id="projTitle" placeholder="e.g. Royal Cafe Website" required>
+            </div>
+
+            <div class="form-group">
+              <label for="projCategory">Category</label>
+              <input type="text" id="projCategory" placeholder="e.g. Business Website, E-commerce" required>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="projUrl">Live Website Link</label>
+              <input type="url" id="projUrl" placeholder="https://example.com" required>
+            </div>
+
+            <div class="form-group">
+              <label for="projImage">Project Screenshot</label>
+              <input type="file" id="projImage" accept="image/*" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="projDesc">Short Description</label>
+            <textarea id="projDesc" rows="3" placeholder="Brief summary of the website..." required></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary" id="addProjBtn">Add Project</button>
+          <p class="form-status" id="projectFormStatus"></p>
+        </form>
+      </section>
+
+      <!-- Existing Projects List -->
+      <section class="admin-card">
+        <h3>Manage Projects</h3>
+        <div class="admin-list" id="adminProjectsList">
+          <p class="muted-text">Loading projects...</p>
+        </div>
+      </section>
+
+      <!-- Client Inquiries List -->
+      <section class="admin-card">
+        <h3>Client Inquiries</h3>
+        <div class="admin-list" id="adminInquiriesList">
+          <p class="muted-text">Loading inquiries...</p>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Supabase Library & Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase-config.js"></script>
+  <script src="admin.js"></script>
+</body>
+</html>
